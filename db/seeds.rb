@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Fighter.destroy_all
+
+scrape = Scraper.new
+fighters = scrape.scan_pages
+
+fighters.each { |fighter| Fighter.create(fighter)}

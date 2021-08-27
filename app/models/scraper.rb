@@ -5,8 +5,8 @@ require "pry"
 class Scraper
     # letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-    def self.scanPages
-        letters = ["a", "b", "c", "d"]
+    def scan_pages
+        letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         master_list = []
         letters.each { |letter| 
             puts "http://ufcstats.com/statistics/fighters?char=#{letter}&page=all"
@@ -32,7 +32,7 @@ class Scraper
                 if fighter.children[1].children.children.text != nil
                     fighter_object[:first_name] = fighter.children[1].children.children.text
                 end
-                
+
                 if fighter.children[3] != nil
                     fighter_object[:last_name] = fighter.children[3].children.children.text
                 end
@@ -71,9 +71,9 @@ class Scraper
                 master_list << fighter_object
             } 
         }
-        master_list
+        return master_list
     end
-    binding.pry
 end
 
-scrape = Scraper.new
+# scrape = Scraper.new
+# scrape.scan_pages
